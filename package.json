@@ -1,0 +1,11 @@
+{
+	"name": "eslint-plugin-testing",
+	"version": "0.0.0",
+	"repository": "MatanYadaev/eslint-plugin-testing",
+	"description": "ESLint plugin for testing",
+	"keywords": [],
+	"author": "Matan Yadaev",
+	"dependencies": {
+		"@typescript-eslint/utils": "^6.2.1"
+	}
+}
