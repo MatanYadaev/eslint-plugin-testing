@@ -38,6 +38,54 @@ test(RULE_NAME, () => {
         // Assert
         expect(result).toBe(data.expected);
       });
+      `,
+      `
+      test('bar', () => {
+        // Act
+        const data = getData();
+        
+        // Assert
+        expect(data).toBe('data');
+      });
+      `,
+      `
+      test('bar', () => {
+        //arrange - payload
+        const num1 = 1;
+        const num2 = 2;
+        
+        //act - sum
+        const result = sum(num1, num2);
+        
+        //assert - result
+        expect(result).toBe(3);
+      });
+      `,
+      `
+      test.only('bar', () => {
+        // Arrange
+        const num1 = 1;
+        const num2 = 2;
+        
+        // Act
+        const result = sum(num1, num2);
+        
+        // Assert
+        expect(result).toBe(3);
+      });
+      `,
+      `
+      test.skip('bar', () => {
+        // Arrange
+        const num1 = 1;
+        const num2 = 2;
+        
+        // Act
+        const result = sum(num1, num2);
+        
+        // Assert
+        expect(result).toBe(3);
+      });
       `
     ],
     invalid: [
@@ -60,6 +108,50 @@ test(RULE_NAME, () => {
           { num1: 1, num2: 2, expected: 3 },
         ])('bar', ({ num1, num2, expected }) => {
           expect(sum(num1, num2)).toBe(expected);
+        });
+        `,
+        errors: [
+          {
+            messageId: 'default',
+            line: 2,
+          }
+        ]
+      },
+      {
+        code: `
+        test('bar', () => {
+          // Arrange
+          const num1 = 1;
+          const num2 = 2;
+          
+          // Act & Assert
+          expect(sum(num1, num2)).toBe(3);
+        });
+        `,
+        errors: [
+          {
+            messageId: 'default',
+            line: 2,
+          }
+        ]
+      },
+      {
+        code: `
+        test.only('bar', () => {
+          expect(sum(1, 2)).toBe(3);
+        });
+        `,
+        errors: [
+          {
+            messageId: 'default',
+            line: 2,
+          }
+        ]
+      },
+      {
+        code: `
+        test.skip('bar', () => {
+          expect(sum(1, 2)).toBe(3);
         });
         `,
         errors: [

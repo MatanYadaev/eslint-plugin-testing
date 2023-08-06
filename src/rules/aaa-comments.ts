@@ -13,12 +13,23 @@ const isTestCallExpression = (node: TSESTree.CallExpression) => {
     return true;
   }
 
-  return node.callee.type === 'CallExpression' &&
+  const isOnlyOrSkipCall = node.callee.type === 'MemberExpression' &&
+    node.callee.object.type === 'Identifier' &&
+    testFunctionNames.includes(node.callee.object.name) &&
+    ['only', 'skip'].includes(node.callee.property.name);
+
+  if (isOnlyOrSkipCall) {
+    return true;
+  }
+
+  const isEachCallExpression = node.callee.type === 'CallExpression' &&
     node.callee.callee.type === 'MemberExpression' &&
     node.callee.callee.object.type === 'Identifier' &&
     testFunctionNames.includes(node.callee.callee.object.name) &&
     node.callee.callee.property.type === 'Identifier' &&
     node.callee.callee.property.name === 'each';
+
+  return isEachCallExpression;
 }
 
 export default createRule<Options, MessageIds>({
@@ -42,7 +53,7 @@ export default createRule<Options, MessageIds>({
         comment.value.trim().toLowerCase().startsWith('assert')
       );
 
-      if (!(hasArrangeComment && hasActComment && hasAssertComment)) {
+      if (!( hasActComment && hasAssertComment)) {
         context.report({
           node,
           messageId: 'default',
