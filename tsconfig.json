@@ -1,0 +1,10 @@
+{
+  "extends": ["@tsconfig/node12/tsconfig.json", "@tsconfig/strictest/tsconfig.json"],
+  "compilerOptions": {
+    "moduleResolution": "nodenext",
+    "module": "commonjs",
+    "sourceMap": true,
+    "resolveJsonModule": true
+  },
+  "include": ["src/**/*"],
+}

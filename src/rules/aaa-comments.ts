@@ -1,4 +1,4 @@
-import { ESLintUtils, TSESTree } from "@typescript-eslint/utils";
+import {TSESTree} from "@typescript-eslint/utils";
 import {createRule} from "../utils/create-rule";
 
 export const RULE_NAME = 'aaa-comments'
@@ -16,6 +16,7 @@ const isTestCallExpression = (node: TSESTree.CallExpression) => {
   const isOnlyOrSkipCall = node.callee.type === 'MemberExpression' &&
     node.callee.object.type === 'Identifier' &&
     testFunctionNames.includes(node.callee.object.name) &&
+    'name' in node.callee.property &&
     ['only', 'skip'].includes(node.callee.property.name);
 
   if (isOnlyOrSkipCall) {
@@ -41,10 +42,6 @@ export default createRule<Options, MessageIds>({
 
       const comments = context.getSourceCode().getCommentsInside(node);
 
-      const hasArrangeComment = comments.some((comment) =>
-        comment.value.trim().toLowerCase().startsWith('arrange')
-      );
-
       const hasActComment = comments.some((comment) =>
         comment.value.trim().toLowerCase().startsWith('act')
       );
@@ -53,7 +50,7 @@ export default createRule<Options, MessageIds>({
         comment.value.trim().toLowerCase().startsWith('assert')
       );
 
-      if (!( hasActComment && hasAssertComment)) {
+      if (!(hasActComment && hasAssertComment)) {
         context.report({
           node,
           messageId: 'default',

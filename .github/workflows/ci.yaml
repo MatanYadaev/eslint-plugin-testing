@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+
+env:
+  PNPM_VERSION: 8.6.3
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        node-version: [12.x, 14.x, 16.x, 17.x, 18.x, 19.x, 20.x]
+        eslint-version: [7, 8]
+        os: [ubuntu-latest, windows-latest]
+      fail-fast: false
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: pnpm/action-setup@v2
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: Node ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: pnpm
+
+      - run: pnpm install
+
+      - run: pnpm test:ci
