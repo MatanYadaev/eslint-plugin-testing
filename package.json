@@ -44,7 +44,7 @@
 		"@typescript-eslint/utils": "^6.4.0"
 	},
 	"devDependencies": {
-		"@tsconfig/node12": "^12.1.0",
+		"@tsconfig/node14": "^14.1.0",
 		"@tsconfig/strictest": "^2.0.1",
 		"@types/eslint": "^8.44.2",
 		"@typescript-eslint/parser": "^6.4.0",
@@ -52,7 +52,6 @@
 		"eslint": "^8.47.0",
 		"eslint-doc-generator": "^1.4.3",
 		"eslint-plugin-eslint-plugin": "^5.1.1",
-		"node12": "link:@@tsconfig/node12",
 		"typescript": "^5.1.6",
 		"unbuild": "^1.2.1",
 		"vitest": "^0.34.1"
@@ -60,8 +59,8 @@
 	"peerDependencies": {
 		"eslint": "^7.0.0 || ^8.0.0"
 	},
-	"packageManager": "pnpm@^7.0.0",
+	"packageManager": "pnpm@7.33.6",
 	"engines": {
-		"node": ">=12.0.0"
+		"node": ">=14.0.0"
 	}
 }
