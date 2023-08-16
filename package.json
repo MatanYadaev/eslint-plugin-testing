@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-testing",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "ESLint plugin for testing",
   "keywords": [
     "testing",
@@ -9,6 +9,9 @@
     "eslint-plugin",
     "eslint-plugin-testing"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "homepage": "https://github.com/MatanYadaev/eslint-plugin-testing#readme",
   "bugs": {
     "url": "https://github.com/MatanYadaev/eslint-plugin-testing/issues"
