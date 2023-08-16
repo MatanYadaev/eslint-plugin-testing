@@ -1,11 +1,11 @@
-## eslint-plugin-testing
+# eslint-plugin-testing
 
 ![npm](https://img.shields.io/npm/v/eslint-plugin-testing)
 [![ci](https://github.com/MatanYadaev/eslint-plugin-testing/actions/workflows/ci.yaml/badge.svg?branch=main)](https://github.com/MatanYadaev/eslint-plugin-testing/actions/workflows/ci.yaml)
 
 ESLint plugin for testing.
 
-### Installation
+## Installation
 
 1. First, install [ESLint](https://eslint.org/):
 
@@ -19,7 +19,7 @@ ESLint plugin for testing.
    npm install --save-dev eslint-plugin-testing
    ```
 
-### Usage
+## Usage
 
 Add `testing` to the plugins section of your `.eslintrc` configuration file:
 
@@ -39,7 +39,7 @@ Then configure the rules you want to use under the rules section.
 }
 ```
 
-#### Recommended
+### Recommended
 
 To use the recommended configuration, extend it in your `.eslintrc` file:
 
@@ -51,7 +51,7 @@ To use the recommended configuration, extend it in your `.eslintrc` file:
 
 All recommend rules will be set to error by default. You can however disable some rules by setting turning them `off` in your `.eslintrc` file or by setting them to `warn` in your `.eslintrc`.
 
-#### all
+### All
 
 To use the all configuration, extend it in your `.eslintrc` file:
 
@@ -61,12 +61,17 @@ To use the all configuration, extend it in your `.eslintrc` file:
 }
 ```
 
-### Rules
+## Rules
 
 <!-- begin auto-generated rules list -->
+
+| Name                                       | Description          |
+| :----------------------------------------- | :------------------- |
+| [aaa-comments](docs/rules/aaa-comments.md) | Enforce AAA comments |
+
 <!-- end auto-generated rules list -->
 
-### Licence
+## Licence
 
 [MIT](https://github.com/MatanYadaev/eslint-plugin-testing/blob/main/LICENSE)
 

@@ -69,6 +69,6 @@ export default createRule<Options, MessageIds>({
     },
     schema: [],
   },
-  defaultOptions: []
+  defaultOptions: [],
 })
 

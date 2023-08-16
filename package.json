@@ -16,13 +16,13 @@
   "repository": "MatanYadaev/eslint-plugin-testing",
   "license": "MIT",
   "author": "Matan Yadaev",
-  "type": "module",
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
+  "type": "commonjs",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
   "exports": {
     ".": {
-      "require": "./dist/index.cjs",
-      "default": "./dist/index.js"
+      "require": "./dist/index.js",
+      "default": "./dist/index.mjs"
     }
   },
   "files": [
