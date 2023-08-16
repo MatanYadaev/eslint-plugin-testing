@@ -65,9 +65,14 @@ To use the all configuration, extend it in your `.eslintrc` file:
 
 <!-- begin auto-generated rules list -->
 
-| Name                                       | Description          |
-| :----------------------------------------- | :------------------- |
-| [aaa-comments](docs/rules/aaa-comments.md) | Enforce AAA comments |
+💼 Configurations enabled in.\
+⚠️ Configurations set to warn in.\
+🌐 Set in the `all` configuration.\
+✅ Set in the `recommended` configuration.
+
+| Name                                       | Description          | 💼 | ⚠️ |
+| :----------------------------------------- | :------------------- | :- | :- |
+| [aaa-comments](docs/rules/aaa-comments.md) | Enforce AAA comments | ✅  | 🌐 |
 
 <!-- end auto-generated rules list -->
 

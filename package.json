@@ -30,11 +30,10 @@
   ],
   "scripts": {
     "build": "tsup src/index.ts --format cjs,esm --clean --minify",
-    "lint:eslint-docs": "pnpm build && eslint-doc-generator --check",
     "release": "pnpm build && bumpp package.json && pnpm publish",
     "test": "vitest run",
-    "test:watch": "vitest",
-    "update:eslint-docs": "pnpm build && eslint-doc-generator",
+    "eslint-docs:update": "pnpm build && eslint-doc-generator",
+    "eslint-docs:check": "pnpm build && eslint-doc-generator --check",
     "type:check": "tsc --noEmit"
   },
   "dependencies": {

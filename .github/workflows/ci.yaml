@@ -54,3 +54,17 @@ jobs:
           cache: pnpm
       - run: pnpm install
       - run: pnpm build
+
+  eslint-docs-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        with:
+          version: ${{ env.PNPM_VERSION }}
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20.x
+          cache: pnpm
+      - run: pnpm install
+      - run: pnpm eslint-docs:check

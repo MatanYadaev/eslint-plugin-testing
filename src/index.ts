@@ -1,33 +1,25 @@
-import enforceAaaComments, {RULE_NAME as enforceAaaCommentsRuleName} from './rules/aaa-comments.js';
+import aaaComments, {RULE_NAME as aaaCommentsRuleName} from './rules/aaa-comments.js';
 import {createConfig} from "./utils/create-config.js";
 
-const rules = {
-  [enforceAaaCommentsRuleName]: enforceAaaComments,
+export const rules = {
+  [aaaCommentsRuleName]: aaaComments,
 }
 
-const allRules = Object.entries(rules).reduce(
-  (acc, [name, rule]) => ({
-    ...acc,
-    [`testing/${name}`]: rule,
-  }
-), {});
+const allRules = {
+  [`testing/${aaaCommentsRuleName}`]: 'warn',
+} as const;
 
-const recommendedRules = Object.entries(rules)
-  .filter(([, rule]) => rule.meta.docs?.recommended)
-  .reduce(
-    (acc, [name, rule]) => ({
-      ...acc,
-      [`testing/${name}`]: rule.meta.docs!.recommended,
-    }),
-    {},
-  );
+const recommendedRules = {
+  [`testing/${aaaCommentsRuleName}`]: 'error',
+} as const;
+
+
+export const configs = {
+  all: createConfig(allRules),
+  recommended: createConfig(recommendedRules),
+};
 
 export default {
-  rules: {
-    [enforceAaaCommentsRuleName]: enforceAaaComments,
-  },
-  configs: {
-    all : createConfig(allRules),
-    recommended: createConfig(recommendedRules),
-  },
+  rules,
+  configs: configs,
 }
