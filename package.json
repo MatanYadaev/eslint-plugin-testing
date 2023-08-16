@@ -18,16 +18,18 @@
   "author": "Matan Yadaev",
   "type": "module",
   "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
+  "module": "./dist/index.js",
   "exports": {
     ".": {
       "require": "./dist/index.cjs",
-      "default": "./dist/index.mjs"
+      "default": "./dist/index.js"
     }
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "build": "tsc && rimraf dist/src dist/package.json",
+    "build": "tsup src/index.ts --format cjs,esm --clean --minify --dts",
     "lint:eslint-docs": "pnpm build && eslint-doc-generator --check",
     "release": "pnpm build && bumpp package.json && pnpm publish",
     "test": "vitest run",
@@ -48,7 +50,7 @@
     "eslint": "^8.47.0",
     "eslint-doc-generator": "^1.4.3",
     "eslint-plugin-eslint-plugin": "^5.1.1",
-    "rimraf": "^5.0.1",
+    "tsup": "^7.2.0",
     "typescript": "^5.1.6",
     "vitest": "^0.34.1"
   },
