@@ -1,66 +1,62 @@
 {
-	"name": "eslint-plugin-testing",
-	"version": "0.0.0",
-	"description": "ESLint plugin for testing",
-	"keywords": [
-		"testing",
-		"eslint",
-		"eslintplugin",
-		"eslint-plugin",
-		"eslint-plugin-testing"
-	],
-	"homepage": "https://github.com/MatanYadaev/eslint-plugin-testing#readme",
-	"bugs": {
-		"url": "https://github.com/MatanYadaev/eslint-plugin-testing/issues"
-	},
-	"repository": "MatanYadaev/eslint-plugin-testing",
-	"license": "MIT",
-	"author": "Matan Yadaev",
-	"main": "./dist/index.cjs",
-	"module": "./dist/index.mjs",
-	"types": "./dist/index.d.ts",
-	"exports": {
-		".": {
-			"require": "./dist/index.cjs",
-			"default": "./dist/index.mjs",
-			"types": "./dist/index.d.ts"
-		}
-	},
-	"files": [
-		"dist"
-	],
-	"scripts": {
-		"build": "unbuild",
-		"lint:eslint-docs": "pnpm build && eslint-doc-generator --check",
-		"lint:js": "eslint . --fix",
-		"lint": "concurrently --prefixColors auto \"pnpm:lint:*\"",
-		"release": "pnpm build && bumpp package.json --commit --push --tag && pnpm publish",
-		"stub": "unbuild --stub",
-		"test:ci": "vitest run",
-		"test": "vitest",
-		"update:eslint-docs": "pnpm build && eslint-doc-generator"
-	},
-	"dependencies": {
-		"@typescript-eslint/utils": "^6.4.0"
-	},
-	"devDependencies": {
-		"@tsconfig/node16": "^16.1.0",
-		"@tsconfig/strictest": "^2.0.1",
-		"@types/eslint": "^8.44.2",
-		"@typescript-eslint/parser": "^6.4.0",
-		"@typescript-eslint/rule-tester": "^6.4.0",
-		"eslint": "^8.47.0",
-		"eslint-doc-generator": "^1.4.3",
-		"eslint-plugin-eslint-plugin": "^5.1.1",
-		"typescript": "^5.1.6",
-		"unbuild": "^1.2.1",
-		"vitest": "^0.34.1"
-	},
-	"peerDependencies": {
-		"eslint": "^7.0.0 || ^8.0.0"
-	},
-	"packageManager": "pnpm@8.6.3",
-	"engines": {
-		"node": ">=16.0.0"
-	}
+  "name": "eslint-plugin-testing",
+  "version": "0.0.0",
+  "description": "ESLint plugin for testing",
+  "keywords": [
+    "testing",
+    "eslint",
+    "eslintplugin",
+    "eslint-plugin",
+    "eslint-plugin-testing"
+  ],
+  "homepage": "https://github.com/MatanYadaev/eslint-plugin-testing#readme",
+  "bugs": {
+    "url": "https://github.com/MatanYadaev/eslint-plugin-testing/issues"
+  },
+  "repository": "MatanYadaev/eslint-plugin-testing",
+  "license": "MIT",
+  "author": "Matan Yadaev",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.mjs"
+    }
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsc && rimraf dist/src dist/package.json",
+    "lint:eslint-docs": "pnpm build && eslint-doc-generator --check",
+    "release": "pnpm build && bumpp package.json && pnpm publish",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "update:eslint-docs": "pnpm build && eslint-doc-generator",
+    "type:check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@typescript-eslint/utils": "^6.4.0"
+  },
+  "devDependencies": {
+    "@tsconfig/node16": "^16.1.0",
+    "@tsconfig/strictest": "^2.0.1",
+    "@types/eslint": "^8.44.2",
+    "@typescript-eslint/parser": "^6.4.0",
+    "@typescript-eslint/rule-tester": "^6.4.0",
+    "bumpp": "^9.1.1",
+    "eslint": "^8.47.0",
+    "eslint-doc-generator": "^1.4.3",
+    "eslint-plugin-eslint-plugin": "^5.1.1",
+    "rimraf": "^5.0.1",
+    "typescript": "^5.1.6",
+    "vitest": "^0.34.1"
+  },
+  "peerDependencies": {
+    "eslint": "^7.0.0 || ^8.0.0"
+  },
+  "packageManager": "pnpm@8.6.3",
+  "engines": {
+    "node": ">=16.0.0"
+  }
 }

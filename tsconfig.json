@@ -1,10 +1,10 @@
 {
   "extends": ["@tsconfig/node16/tsconfig.json", "@tsconfig/strictest/tsconfig.json"],
   "compilerOptions": {
-    "moduleResolution": "nodenext",
-    "module": "commonjs",
+    "outDir": "dist",
+
     "sourceMap": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
   },
   "include": ["src/**/*"],
 }

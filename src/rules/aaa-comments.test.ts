@@ -1,6 +1,6 @@
 import {test} from 'vitest';
-import rule, {RULE_NAME} from './aaa-comments';
-import {ruleTester} from "../utils/rule-tester";
+import rule, {RULE_NAME} from './aaa-comments.js';
+import {ruleTester} from "../utils/rule-tester.js";
 
 test(RULE_NAME, () => {
   ruleTester.run(RULE_NAME, rule, {

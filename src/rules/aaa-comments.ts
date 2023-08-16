@@ -1,5 +1,5 @@
 import {TSESTree} from "@typescript-eslint/utils";
-import {createRule} from "../utils/create-rule";
+import {createRule} from "../utils/create-rule.js";
 
 export const RULE_NAME = 'aaa-comments'
 export type Options = []

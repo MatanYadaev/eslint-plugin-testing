@@ -33,4 +33,4 @@ jobs:
 
       - run: pnpm install
 
-      - run: pnpm test:ci
+      - run: pnpm test
