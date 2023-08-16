@@ -37,6 +37,9 @@ devDependencies:
   eslint-plugin-eslint-plugin:
     specifier: ^5.1.1
     version: 5.1.1(eslint@8.47.0)
+  node14:
+    specifier: link:@@tsconfig/node14
+    version: link:@@tsconfig/node14
   tsup:
     specifier: ^7.2.0
     version: 7.2.0(typescript@5.1.6)
