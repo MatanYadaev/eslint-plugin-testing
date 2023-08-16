@@ -1,7 +1,11 @@
 name: CI
 
 on:
+  workflow_call:
+  workflow_dispatch:
   push:
+    branches-ignore:
+      - main
 
 env:
   PNPM_VERSION: 8.6.3

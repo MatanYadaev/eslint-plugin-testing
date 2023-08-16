@@ -5,12 +5,19 @@ on:
     branches:
       - main
 
-concurrency: ${{ github.workflow }}-${{ github.ref }}
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 
 env:
   PNPM_VERSION: 8.6.3
 
 jobs:
+  ci:
+    uses: ./.github/workflows/ci.yaml
+    secrets: inherit
+
   release:
     runs-on: ubuntu-latest
     steps:
