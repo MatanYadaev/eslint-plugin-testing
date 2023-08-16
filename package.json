@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-testing",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "ESLint plugin for testing",
   "keywords": [
     "testing",
@@ -30,7 +30,7 @@
   ],
   "scripts": {
     "build": "tsup src/index.ts --format cjs,esm --clean --minify",
-    "release": "pnpm build && bumpp package.json && pnpm publish",
+    "release": "pnpm build && changeset publish",
     "test": "vitest run",
     "eslint-docs:update": "pnpm build && eslint-doc-generator",
     "eslint-docs:check": "pnpm build && eslint-doc-generator --check",
@@ -40,6 +40,7 @@
     "@typescript-eslint/utils": "^6.4.0"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.26.2",
     "@tsconfig/node16": "^16.1.0",
     "@tsconfig/strictest": "^2.0.1",
     "@types/eslint": "^8.44.2",
