@@ -39,6 +39,7 @@ ruleTester.run(RULE_NAME, rule, {
       `,
     `
       test('bar', () => {
+        // Arrange
         // Act
         const data = getData();
         
@@ -95,7 +96,7 @@ ruleTester.run(RULE_NAME, rule, {
         `,
       errors: [
         {
-          messageId: 'default',
+          messageId: 'missing',
           line: 2,
         }
       ]
@@ -110,7 +111,7 @@ ruleTester.run(RULE_NAME, rule, {
         `,
       errors: [
         {
-          messageId: 'default',
+          messageId: 'missing',
           line: 2,
         }
       ]
@@ -128,7 +129,7 @@ ruleTester.run(RULE_NAME, rule, {
         `,
       errors: [
         {
-          messageId: 'default',
+          messageId: 'missing',
           line: 2,
         }
       ]
@@ -141,7 +142,7 @@ ruleTester.run(RULE_NAME, rule, {
         `,
       errors: [
         {
-          messageId: 'default',
+          messageId: 'missing',
           line: 2,
         }
       ]
@@ -154,10 +155,29 @@ ruleTester.run(RULE_NAME, rule, {
         `,
       errors: [
         {
-          messageId: 'default',
+          messageId: 'missing',
           line: 2,
         }
       ]
-    }
+    },
+    {
+      code: `
+        test('bar', () => {
+          // Act
+          const num1 = 1;
+          const num2 = 2;
+          // Arrange
+          const result = sum(num1, num2);
+          // Assert
+          expect(result).toBe(3);
+        });
+        `,
+      errors: [
+        {
+          messageId: 'wrong-order',
+          line: 2,
+        }
+      ]
+    },
   ]
 })

@@ -3,7 +3,7 @@ import {createRule} from "../utils/create-rule.js";
 
 export const RULE_NAME = 'aaa-comments'
 export type Options = []
-export type MessageIds = 'default';
+export type MessageIds = 'missing' | 'wrong-order';
 
 const testFunctionNames = ['it', 'test'];
 
@@ -33,6 +33,10 @@ const isTestCallExpression = (node: TSESTree.CallExpression) => {
   return isEachCallExpression;
 }
 
+const findCommentByKeyword = (comments: TSESTree.Comment[], keyword: string) =>
+  comments.find(comment => comment.value.trim().toLowerCase().startsWith(keyword));
+
+
 export default createRule<Options, MessageIds>({
   create: (context) => ({
     CallExpression(node) {
@@ -42,18 +46,25 @@ export default createRule<Options, MessageIds>({
 
       const comments = context.getSourceCode().getCommentsInside(node);
 
-      const hasActComment = comments.some((comment) =>
-        comment.value.trim().toLowerCase().startsWith('act')
-      );
+      const arrangeComment = findCommentByKeyword(comments, 'arrange');
+      const actComment = findCommentByKeyword(comments, 'act');
+      const assertComment = findCommentByKeyword(comments, 'assert');
 
-      const hasAssertComment = comments.some((comment) =>
-        comment.value.trim().toLowerCase().startsWith('assert')
-      );
-
-      if (!(hasActComment && hasAssertComment)) {
+      if (!arrangeComment || !actComment || !assertComment) {
         context.report({
           node,
-          messageId: 'default',
+          messageId: 'missing',
+        });
+        return;
+      }
+
+      if (
+        arrangeComment.loc.start.line > actComment.loc.start.line ||
+        actComment.loc.start.line > assertComment.loc.start.line
+      ) {
+        context.report({
+          node,
+          messageId: 'wrong-order',
         });
       }
     },
@@ -65,7 +76,8 @@ export default createRule<Options, MessageIds>({
       description: 'Enforce AAA comments',
     },
     messages: {
-      default: 'All tests should include Arrange, Act, and Assert comments.',
+      missing: 'Test should have arrange, act, and assert comments',
+      'wrong-order': 'Test should have arrange, act, and assert comments in the right order',
     },
     schema: [],
   },

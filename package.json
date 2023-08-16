@@ -34,6 +34,7 @@
   "scripts": {
     "build": "tsup src/index.ts --format cjs,esm --clean --minify",
     "release": "pnpm build && changeset publish",
+    "changesets:add": "changeset add",
     "test": "vitest run",
     "eslint-docs:update": "pnpm build && eslint-doc-generator",
     "eslint-docs:check": "pnpm build && eslint-doc-generator --check",
