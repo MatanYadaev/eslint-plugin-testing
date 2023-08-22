@@ -41,22 +41,20 @@
     "type:check": "tsc --noEmit"
   },
   "dependencies": {
-    "@typescript-eslint/utils": "^6.4.0"
+    "@typescript-eslint/utils": "^6.4.1"
   },
   "devDependencies": {
     "@changesets/cli": "^2.26.2",
-    "@tsconfig/node16": "^16.1.0",
+    "@tsconfig/node16": "^16.1.1",
     "@tsconfig/strictest": "^2.0.1",
     "@types/eslint": "^8.44.2",
-    "@typescript-eslint/parser": "^6.4.0",
-    "@typescript-eslint/rule-tester": "^6.4.0",
-    "bumpp": "^9.1.1",
+    "@typescript-eslint/parser": "^6.4.1",
+    "@typescript-eslint/rule-tester": "^6.4.1",
     "eslint": "^8.47.0",
     "eslint-doc-generator": "^1.4.3",
-    "eslint-plugin-eslint-plugin": "^5.1.1",
     "tsup": "^7.2.0",
     "typescript": "^5.1.6",
-    "vitest": "^0.34.1"
+    "vitest": "^0.34.2"
   },
   "peerDependencies": {
     "eslint": "^7.0.0 || ^8.0.0"
