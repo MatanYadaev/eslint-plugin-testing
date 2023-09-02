@@ -1,6 +1,6 @@
 # eslint-plugin-testing
 
-![npm](https://img.shields.io/npm/v/eslint-plugin-testing)
+[![npm](https://img.shields.io/npm/v/eslint-plugin-testing)](https://www.npmjs.com/package/eslint-plugin-testing)
 [![ci](https://github.com/MatanYadaev/eslint-plugin-testing/actions/workflows/ci.yaml/badge.svg?branch=main)](https://github.com/MatanYadaev/eslint-plugin-testing/actions/workflows/ci.yaml)
 
 ESLint plugin for testing.
